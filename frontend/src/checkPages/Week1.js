@@ -25,7 +25,7 @@ export default function Week1({ user }) {
   }
 
   const fetchRecord = async () => {
-    console.log(user.user.phone_number)
+    // console.log(user.user.phone_number)
     const response = await fetch(
       'http://localhost:3000/api/progress/week1/' + user.user.phone_number
     )
@@ -122,16 +122,18 @@ export default function Week1({ user }) {
                 <div>
                     {record && (
                         <div>
-                            {record.name}---{record.task1 ? 'done' : 'notdone'}---{record.task2 ? 'done' : 'notdone'}---{record.task3 ? 'done' : 'notdone'}---{record.task4 ? 'done' : 'notdone'}---{record.task5 ? 'done' : 'notdone'}---{record.task6 ? 'done' : 'notdone'}---{record.link1}---{record.link2}
+                            {record.name}---{record.task1 ? 'done' : 'notdone'}---{record.task2 ? 'done' : 'notdone'}---
+                            {/* {record.task3 ? 'done' : 'notdone'}---{record.task4 ? 'done' : 'notdone'}---{record.task5 ? 'done' : 'notdone'}---{record.task6 ? 'done' : 'notdone'}---{record.link2} */}
+                            ---{record.link1}
                             <form onSubmit={handleSubmit}>
                                 <input type="checkbox" checked={taskone} onChange={handleCheck1}/>task1
                                 <input type="checkbox" checked={tasktwo} onChange={handleCheck2}/>task2
-                                <input type="checkbox" checked={taskthree} onChange={handleCheck3}/>task3
-                                <input type="checkbox" checked={taskfour} onChange={handleCheck4}/>task4
-                                <input type="checkbox" checked={taskfive} onChange={handleCheck5}/>task5
-                                <input type="checkbox" checked={tasksix} onChange={handleCheck6}/>task6
+                                <input type="checkbox" checked={taskthree} onChange={handleCheck3} disabled={true}/>task3
+                                <input type="checkbox" checked={taskfour} onChange={handleCheck4} disabled={true}/>task4
+                                <input type="checkbox" checked={taskfive} onChange={handleCheck5} disabled={true}/>task5
+                                <input type="checkbox" checked={tasksix} onChange={handleCheck6} disabled={true}/>task6
                                 <input type="text" value={linkone} placeholder="Enter Link 1" onChange={(e) => { setLinkOne(e.target.value) }} />
-                                <input type="text" value={linktwo} placeholder="Enter Link 2" onChange={(e) => { setLinkTwo(e.target.value) }} />
+                                {/* <input type="text" value={linktwo} placeholder="Enter Link 2" onChange={(e) => { setLinkTwo(e.target.value) }} /> */}
                                 <button>SUBMIT</button>
                             </form>
                         </div>
@@ -144,7 +146,9 @@ export default function Week1({ user }) {
             <div>
                 {week && week.map((x) => (
                     <p key={x._id}>
-                        {x._id}---{x.name}---{x.task1 ? 'done' : 'notdone'}---{x.task2 ? 'done' : 'notdone'}---{x.task3 ? 'done' : 'notdone'}---{x.task4 ? 'done' : 'notdone'}---{x.task5 ? 'done' : 'notdone'}---{x.task6 ? 'done' : 'notdone'}---{x.link1}---{x.link2}
+                        {x._id}---{x.name}---{x.task1 ? 'done' : 'notdone'}---{x.task2 ? 'done' : 'notdone'}
+                        {/* ---{x.task3 ? 'done' : 'notdone'}---{x.task4 ? 'done' : 'notdone'}---{x.task5 ? 'done' : 'notdone'}---{x.task6 ? 'done' : 'notdone'}---{x.link2} */}
+                        ---{x.link1}
 
                     </p>
                 ))}

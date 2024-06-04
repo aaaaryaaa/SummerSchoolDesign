@@ -92,12 +92,14 @@ export default function Week4({ user }) {
                 <div>
                     {record && (
                         <div>
-                            {record.name}---{record.task1 ? 'done' : 'notdone'}---{record.task2 ? 'done' : 'notdone'}---{record.link1}---{record.link2}
+                            {record.name}---{record.task1 ? 'done' : 'notdone'}
+                            {/* ---{record.task2 ? 'done' : 'notdone'}---{record.link2} */}
+                            ---{record.link1}
                             <form onSubmit={handleSubmit}>
                                 <input type="checkbox" checked={taskone} onChange={handleCheck1}/>task1
-                                <input type="checkbox" checked={tasktwo} onChange={handleCheck2}/>task2
+                                <input type="checkbox" checked={tasktwo} onChange={handleCheck2} disabled={true}/>task2
                                 <input type="text" value={linkone} placeholder="Enter Link 1" onChange={(e) => { setLinkOne(e.target.value) }} />
-                                <input type="text" value={linktwo} placeholder="Enter Link 2" onChange={(e) => { setLinkTwo(e.target.value) }} />
+                                {/* <input type="text" value={linktwo} placeholder="Enter Link 2" onChange={(e) => { setLinkTwo(e.target.value) }} /> */}
                                 <button>SUBMIT</button>
                             </form>
                         </div>
@@ -110,7 +112,9 @@ export default function Week4({ user }) {
             <div>
                 {week && week.map((x) => (
                     <p key={x._id}>
-                        {x._id}---{x.name}---{x.task1 ? 'done' : 'notdone'}---{x.task2 ? 'done' : 'notdone'}---{x.link1}---{x.link2}
+                        {x._id}---{x.name}---{x.task1 ? 'done' : 'notdone'}
+                        {/* ---{x.task2 ? 'done' : 'notdone'}---{x.link2} */}
+                        ---{x.link1}
 
                     </p>
                 ))}
